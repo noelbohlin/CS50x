@@ -37,13 +37,13 @@ To get started with this repository, follow these steps:
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/cs50x-2024-solutions.git
+git clone https://github.com/noelbohlin/cs50x.git
 ```
 
 2. Navigate to the specific problem set you are interested in:
 
 ```bash
-cd cs50x-2024-solutions/pset1
+cd cs50x/pset1
 ```
 
 3. Explore the solution files and any additional documentation.
