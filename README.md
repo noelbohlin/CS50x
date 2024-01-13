@@ -19,6 +19,7 @@ Please note that while this repository provides solutions, it is essential to un
 
 ## Problem Sets
 
+0. [Problem Set 0: Scratch](./pset0/)
 1. [Problem Set 1: C](./pset1/)
 2. [Problem Set 2: Arrays](./pset2/)
 3. [Problem Set 3: Algorithms](./pset3/)
@@ -27,7 +28,8 @@ Please note that while this repository provides solutions, it is essential to un
 6. [Problem Set 6: Python](./pset6/)
 7. [Problem Set 7: SQL](./pset7/)
 8. [Problem Set 8: Web](./pset8/)
-
+9. [Problem Set 9: Flask](./pset9/)
+10. [Final Project](./final_project/)
 ## Getting Started
 
 To get started with this repository, follow these steps:
