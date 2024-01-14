@@ -57,7 +57,7 @@ To get started with this repository, follow these steps:
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/cs50x.git
+git clone https://github.com/noelbohlin/cs50x.git
 ```
 
 2. Navigate to the specific problem set or note you are interested in:
