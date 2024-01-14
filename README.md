@@ -66,13 +66,11 @@ git clone https://github.com/noelbohlin/cs50x.git
 cd cs50x/pset1
 ```
 
-or
+3. Explore the solution files and additional documentation.
 
 ```bash
-cd cs50x/lecture1
+code notes.md
 ```
-
-3. Explore the solution files and additional documentation.
 
 ## Usage
 
@@ -98,5 +96,3 @@ Please ensure that your solutions are well-documented and adhere to any guidelin
 ## License
 
 This repository is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
-Happy studying, and best of luck with your CS50x journey!
