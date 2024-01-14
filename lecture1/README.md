@@ -180,3 +180,118 @@ int main(void)
 - **"** double quotes for multiple characters
 - **||** means **"or"**
 - **&&** means **"and"**
+
+## Loops
+
+### meow.c
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int i = 3;
+    while (i > 0)
+    {
+        printf("meow\n");
+        i--;
+    }
+}
+```
+
+Same but with counting up
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int i = 0;
+    while (i < 3)
+    {
+        printf("meow\n");
+        i++;
+    }
+}
+```
+
+-----
+
+using for loop, most used way to make loops
+
+```c
+for (int i = 0; i < 3; i++)
+```
+
+1. initializes variable
+2. boolean expression
+3. the end of the loop
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        printf("meow\n");
+    }
+}
+```
+
+## Functions
+
+### meow function
+
+abstract the problem
+
+```c
+#include <stdio.h>
+
+void meow(void);
+
+int main(void)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        meow();
+    }
+}
+
+void meow(void)
+{
+    printf("meow\n");
+}
+```
+
+add this to the top. This **prototype** calls the definition of the funcion at the bottom of the code.
+
+```c
+void meow(void);
+```
+
+-----
+
+make the funcion accept input
+
+```c
+#include <stdio.h>
+
+void meow(int n);
+
+int main(void)
+{
+    meow(3);
+}
+
+// Meow some number of times
+void meow(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("meow\n");
+    }
+}
+```
+
+## Calculator
