@@ -1,19 +1,39 @@
-#include <stdio.h>
 #include <cs50.h>
+#include <stdio.h>
 
 int main(void)
 {
-    while(true)
+    int height;
+
+    while (true)
     {
-        int height = get_int("Height");
-        
-        if 0 < height < 9;
+        height = get_int("Height: ");
+
+        if (0 < height && height < 9)
         {
             break;
         }
-        else
+        continue;
+    }
+
+    for (int row = 0; row < height; row++)
+    {
+        for (int blockplacement = 0; blockplacement < height; blockplacement++)
         {
-            continue;
+            if (row + blockplacement < height - 1)
+            {
+                printf(" ");
+            }
+            else
+            {
+                printf("#");
+            }
         }
+        printf("  ");
+        for (int blockplacementright = 0; blockplacementright < row + 1; blockplacementright++)
+        {
+            printf("#");
+        }
+        printf("\n");
     }
 }
