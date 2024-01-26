@@ -272,7 +272,7 @@ void meow(void);
 
 -----
 
-make the funcion accept input
+### make the funcion accept input
 
 ```c
 #include <stdio.h>
@@ -294,3 +294,171 @@ void meow(int n)
 ```
 
 ## Calculator
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int x = get_int("x: ");
+    int y = get_int("y: ");
+
+    printf("%i\n", x + y);
+}
+```
+
+### Abstract the addition to a separate function
+
+```c
+int add(int a, int b)
+{
+    int c = a + b;
+    return c;
+}
+```
+
+This get you the total of
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int add(int a, int b);
+
+int main(void)
+{
+    int x = get_int("x: ");
+    int y = get_int("y: ");
+
+    printf("%i\n", add(x, y));
+}
+
+int add(int a, int b)
+{
+    return a + b;
+}
+```
+
+after a little compacting.
+
+-----
+
+### Scope
+
+You have to define new variables in the new function. The scope of the variables exist only in the context they were created.
+
+## Linux
+
+- ```cd```, for changing our current directory (folder)
+  - ```cd ..```
+- ```cp```, for copying files and directories
+- ```ls```, for listing files in a directory
+  - ```ls -la```
+- ```mkdir```, for making a directory
+- ```mv```, for moving (renaming) files and directories
+  - ```mv oldfilename newfilename```
+- ```rm```, for removing (deleting) files
+- ```rmdir```, for removing (deleting) directories
+
+## Mario
+
+### Horisontal **?**
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        printf("?");
+    }
+    printf("\n");
+}
+```
+
+### Vertical blocks
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        printf("#\n");
+    }
+}
+```
+
+### Cube
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    // print one row at a time
+    for (int i = 0; i < 3; i++)
+    {
+        // print a column
+        for (int j = 0; j < 3; j++)
+        {
+            printf("#");
+        }
+
+        // start printing next line
+        printf("\n");
+    }
+}
+```
+
+With constant size but easily changeble:
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    const int 5
+    while (n < 1);
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+```
+
+With variable size:
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int n;
+    do
+    {
+        n = get_int("Size: ");
+    }
+    while (n < 1);
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+```
+
