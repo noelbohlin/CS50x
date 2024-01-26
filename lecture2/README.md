@@ -146,3 +146,117 @@ Here you can see that the variable h starts at 0 and ends with 3, thus printing 
 
 ## Arrays
 
+- bool 1 byte
+- int 4 bytes
+- long 8 bytes
+- float 4 bytes
+- double 8 bytes
+- char 1 byte
+- string ? bytes
+
+Your RAM is simply a "canvas" with a finite number of bytes available to store and manipulate.
+
+### scores.c
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int score1 = 72;
+    int score2 = 73;
+    int score3 = 33;
+
+    printf("Average: %f\n", (score1 + score2 + score3) / 3.0);
+}
+```
+
+each score here is taking up 4 bytes of memory.
+
+```c
+    int score1 = 72;
+    int score2 = 73;
+    int score3 = 33;
+```
+
+code like this will get very messy in the long run. And teh memory allocation is not organized by us.
+
+### Array
+
+Array is a sequence of values followed by each other in memory. Numbers back to back to back.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int scores[3];
+    scores[0] = get_int("Score: ");
+    scores[1] = get_int("Score: ");
+    scores[2] = get_int("Score: ");
+
+    printf("Average: %f\n", (scores[0] + scores[1] + scores[2]) / 3.0);
+}
+```
+
+```c
+int scores[3]
+```
+
+is a way of telling the compiler to provide you three back-to-back places in memory of size int to store three scores.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    const int N = 3
+    int scores[N];
+    for (int i = 0; i < N; i++)
+    {
+        scores[i] = get_int("Score: ");
+    }
+
+    // Print average
+    printf("Average: %f\n", (scores[0] + scores[1] + scores[2]) / (float) N);
+}
+```
+
+Abstracting away the averaging
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+// Constant
+const int N = 3;
+
+// Prototype
+float average(int length, int array[]);
+
+int main(void)
+{
+    // Get scores
+    int scores[N];
+    for (int i = 0; i < N; i++)
+    {
+        scores[i] = get_int("Score: ");
+    }
+
+    // Print average
+    printf("Average: %f\n", average(N, scores));
+}
+
+float average(int length, int array[])
+{
+    // Calculate average
+    int sum = 0;
+    for (int i = 0; i < length; i++)
+    {
+        sum += array[i];
+    }
+    return sum / (float) length;
+}
+```
