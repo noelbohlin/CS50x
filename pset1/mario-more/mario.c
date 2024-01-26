@@ -1,6 +1,8 @@
 #include <cs50.h>
 #include <stdio.h>
 
+#define PYRAMIDHEIGHT 9
+
 int main(void)
 {
     int height;
@@ -9,7 +11,7 @@ int main(void)
     {
         height = get_int("Height: ");
 
-        if (0 < height && height < 9)
+        if (0 < height && height < PYRAMIDHEIGHT)
         {
             break;
         }
@@ -18,9 +20,9 @@ int main(void)
 
     for (int row = 0; row < height; row++)
     {
-        for (int blockplacement = 0; blockplacement < height; blockplacement++)
+        for (int cursorplacement = 0; cursorplacement < height; cursorplacement++)
         {
-            if (row + blockplacement < height - 1)
+            if (row + cursorplacement < height - 1)
             {
                 printf(" ");
             }
@@ -30,7 +32,7 @@ int main(void)
             }
         }
         printf("  ");
-        for (int blockplacementright = 0; blockplacementright < row + 1; blockplacementright++)
+        for (int cursorplacementright = 0; cursorplacementright < row + 1; cursorplacementright++)
         {
             printf("#");
         }
