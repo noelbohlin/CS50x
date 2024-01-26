@@ -200,6 +200,8 @@ int main(void)
 }
 ```
 
+-----
+
 ```c
 int scores[3]
 ```
@@ -223,6 +225,8 @@ int main(void)
     printf("Average: %f\n", (scores[0] + scores[1] + scores[2]) / (float) N);
 }
 ```
+
+-----
 
 Abstracting away the averaging
 
