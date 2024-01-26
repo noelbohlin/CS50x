@@ -21,39 +21,25 @@ int main(void)
 
 int checksum(long check_number)
 {
-    int sum1 = 0;
-    int sum2 = 0;
-    int sumtotal = 0;
-    int lastdigit;
+    int sum = 0;
     int secondlastdigit;
-    int digit1;
-    int digit2;
 
     // removes 2 digits per "lap"
     do
     {
-        // Remove last digit and add to sum1
-        lastdigit = check_number % 10;
-        check_number /= 10;
-        sum1 += lastdigit;
-
-        // Remove second last digit
-        secondlastdigit = check_number % 10;
+        // Remove last digit and add to sum
+        sum += check_number % 10;
         check_number /= 10;
 
-        // Double second last digit
-        secondlastdigit *= 2;
-
-        // add digits to sum
-        digit1 = secondlastdigit % 10;
-        digit2 = secondlastdigit / 10;
-        sum2 = sum2 + digit1 + digit2;
+        // Remove second last digit, double it and add the separate digits to sum
+        secondlastdigit = (check_number % 10) * 2;
+        sum += secondlastdigit % 10;
+        sum += secondlastdigit / 10;
+        check_number /= 10;
     }
-
     while (check_number > 0);
-    sumtotal = sum1 + sum2;
 
-    if (sumtotal % 10 != 0)
+    if (sum % 10 != 0)
     {
         return 0;
     }
