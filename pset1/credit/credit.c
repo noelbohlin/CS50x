@@ -1,8 +1,8 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int checksum(long n);
-void checklength(long n);
+int checksum(long check_number);
+void checklength(long credit_number);
 
 int main(void)
 {
@@ -19,9 +19,8 @@ int main(void)
     }
 }
 
-int checksum(long n)
+int checksum(long check_number)
 {
-    long check_number = n;
     int sum1 = 0;
     int sum2 = 0;
     int sumtotal = 0;
@@ -61,9 +60,8 @@ int checksum(long n)
     return 1;
 }
 
-void checklength(long n)
+void checklength(long credit_number)
 {
-    long credit_number = n;
     int length = 2;
 
     while (credit_number >= 100)
