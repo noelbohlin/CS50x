@@ -462,3 +462,77 @@ int main(void)
 }
 ```
 
+This uses the
+
+```c
+do
+{}
+while ();
+```
+
+loop
+
+## Types
+
+### Integer Overflow
+
+if the PC don't have enough memory the numbers will "wrap around" and start at 0 again.
+
+```int```s maximal size is 4294967295
+
+### example of types
+
+- bool, a Boolean expression of either true or false
+- char, a single character like a or 2
+- double, a floating-point value with more digits than a float
+- float, a floating-point value, or real number with a decimal value
+- int, integers up to a certain size, or number of bits
+- long, integers with more bits, so they can count higher than an int
+- string, a string of characters
+
+### Truncation
+
+int / int will throw away all the decimals. You have to use type casting to make this work.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int x = get_int("x: ");
+    int y = get_int("y: ");
+
+    float z = (float) x / (float) y
+    printf("%f\n", z);
+}
+```
+
+### Floating point imprecision
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int x = get_int("x: ");
+    int y = get_int("y: ");
+
+    double z = (double) x / (double) y
+    printf("%.20f\n", z);
+}
+```
+
+due to memory limitation and how computers deal with numbers floats and doubles won't be exact.
+
+## Summary
+
+- How to create your first program in C.
+- Predefined functions that come natively with C and how to implement your own functions.
+- How to use variables, conditionals, and loops.
+- How to approach abstraction to simplify and improve your code.
+- How to approach problem-solving for a computer science problem.
+- How to use the Linux command line.
+- How to integrate comments into your code.
+- How to utilize types and operators.
