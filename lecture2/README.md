@@ -86,10 +86,63 @@ The final code is the outputted.
 
 ## Debugging
 
+### buggy.c
 
+```printf``` is a useful tool to catch bugs.
 
+In this example we want to build a 3 block high stack
 
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    for (int i = 0; i <= 3; i++)
+    {
+        printf("i is %i\n", i);
+        printf("#\n");
+    }
+}
+```
+
+but it builds 4
+
+#### better ways
+
+printf is just a lot of trial and error. separating functions makes bugs easuer to catch.
+
+the same goal but with a different program
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+void print_column(int height);
+
+int main(void)
+{
+    int h = get_int("Height: ");
+    print_column(h);
+}
+
+void print_column(int height)
+{
+    for (int i = 0; i <= height; i++)
+    {
+        printf("#\n");
+    }
+}
+```
+
+that has the same problem. It prints 4 blocks.
+
+### Debugger
+
+A debugger will help by excecuting the code one line at a time and displaying values of variables. This will make it possible to see the possible faults in the code.
+
+In CS50 there is a debugger called ```debug50```
+
+Here you can see that the variable h starts at 0 and ends with 3, thus printing 4 bricks instead of 3.
 
 ## Arrays
 
-## Strings
