@@ -419,6 +419,8 @@ int main(void)
 
 This function looks at the ASCII value and subtract 32 to get the uppercase letter if it is lowercase (betwwen 97 and 122).
 
+![ASCII](image-1.png)
+
 ```c
 #include <cs50.h>
 #include <stdio.h>
@@ -475,5 +477,51 @@ int main(void)
 
 ## Command-Line Arguments
 
-- argc the number of command-line arguments
-- argv array of characters passed as arguments.
+- **argc** the number of command-line arguments
+- **argv** array of characters passed as arguments.
+
+These can be passed to main.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(int argc, string argv[])
+{
+    if (argc == 2)
+    {
+        printf("hello, %s\n", argv[1]);
+    }
+    else
+    {
+        printf("hello, world\n");
+    }
+}
+```
+
+```argv[0] == (name of program)```
+
+## Exit status
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(int argc, string argv[])
+{
+    if (argc != 2)
+    {
+        printf("Missing command-line argument\n");
+        return 1;
+    }
+    printf("hello, %s\n", argv[1]);
+    return 0;
+}
+```
+
+Main is returning an integer. This is an exit code. 0 is the standard if everything went well.
+
+## Cryptography
+
+![Cipher](image.png)
+
