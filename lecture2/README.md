@@ -264,3 +264,90 @@ float average(int length, int array[])
     return sum / (float) length;
 }
 ```
+
+## Strings
+
+### Strings vs arrays
+
+In this class the library CS50 creates the string class. Usually in **C** you use ```char string[] = "characters";```
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    char c1 = 'H';
+    char c2 = 'I';
+    char c3 = '!';
+
+    printf("%c%c%c\n", c1, c2, c3);
+}
+```
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string s = "HI!";
+    printf("%c%c%c\n", s[0], s[1], s[2]);
+}
+```
+
+These are the same.
+
+-----
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string s = "HI!";
+    printf("%i %i %i %i\n", s[0], s[1], s[2], s[3]);
+}
+```
+
+This illustrates that characters are just numbers.
+
+-----
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string words[2];
+
+    words[0] = "HI!";
+    words[1] = "BYE!";
+
+    printf("%s\n", words[0]);
+    printf("%s\n", words[1]);
+}
+```
+
+Here the array words in an array where each value is a array with a word. Each word is also an array of characters.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string words[2];
+
+    words[0] = "HI!";
+    words[1] = "BYE!";
+
+    printf("%c%c%c\n", words[0][0], words[0][1], words[0][2]);
+    printf("%s\n", words[1]);
+}
+```
+
+The 2 above gives the same output.
+
+## String Length

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "edbc84b2c7071c53",
+        "id": "0a8c1ad552805621",
         "type": "tabs",
         "children": [
           {
-            "id": "5af0d274c6565ce9",
+            "id": "98641642a6d668ab",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -125,8 +125,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -138,8 +137,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5af0d274c6565ce9",
+  "active": "49a2445822b51d72",
   "lastOpenFiles": [
+    "Untitled.canvas",
+    "README.md",
     "lecture1/README.md"
   ]
 }
