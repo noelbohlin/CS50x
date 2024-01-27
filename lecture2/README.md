@@ -351,3 +351,129 @@ int main(void)
 The 2 above gives the same output.
 
 ## String Length
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string name = get_string("Name: ");
+
+    // Count number of characters up until '\0' (aka NUL)
+    int n = 0;
+    while (name[n] != '\0')
+    {
+        n++;
+    }
+    printf("%i\n", n);
+}
+```
+
+Abstracting away to a function.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int string_length(string s);
+
+int main(void)
+{
+    string name = get_string("Name: ");
+    int length = string_length(name);
+    printf("%i\n", length);
+}
+
+int string_length(string s)
+{
+    int n = 0;
+    while (s[n] != '\0')
+    {
+        n++;
+    }
+    return n;
+}
+```
+
+-----
+
+Using the string library ```<string.h>```
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string name = get_string("Name: ");
+    int length = strlen(name);
+    printf("%i\n", length);
+}
+```
+
+## Uppercase
+
+### Manually
+
+This function looks at the ASCII value and subtract 32 to get the uppercase letter if it is lowercase (betwwen 97 and 122).
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After:  ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if (s[i] >= 'a' && s[i] <= 'z')
+        {
+            printf("%c", s[i] - 32);
+        }
+        else
+        {
+            printf("%c", s[i]);
+        }
+    }
+    printf("\n");
+}
+```
+
+Notice how ```i``` doesn't iterate over the function directly. Rather strlen(s) is initialized as ```n``` so that the function strlen() doesn't have to run over and over again:
+
+```c
+    for (int i = 0, n = strlen(s); i < n; i++)
+```
+
+-----
+
+### Using ```<ctype.h>```
+
+```c
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After:  ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        printf("%c", toupper(s[i]));
+    }
+    printf("\n");
+}
+```
+
+```toupper()``` will uppercase the letter if it is lowercase.
+
+## Command-Line Arguments
+
+- argc the number of command-line arguments
+- argv array of characters passed as arguments.
