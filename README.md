@@ -20,7 +20,7 @@ Please note that while this repository provides solutions, it is essential to un
 
 ## Personal Notes
 
-In this section, you will find my personal notes on various topics related to the CS50x course. These notes are intended to supplement the course materials and provide additional insights and explanations. They are written in Markdown and are easy to read and understand.
+In this section, you will find my personal notes on the various topics related to the CS50x course. These notes are intended to supplement the course materials and provide additional insights and explanations. They are written in Markdown and are easy to read and understand even though they are not of an instructional nature.
 
 0. [Lecture 0: Scratch](./lecture1/)
 1. [Lecture 1: C](./lecture1/)
