@@ -26,13 +26,11 @@ void encrypt(string text, string key)
         {
             if (isupper(text[i]) != 0)
             {
-                int index = text[i] - 'A';
-                printf("%c", toupper(key[index]));
+                printf("%c", toupper(key[text[i] - 'A']));
             }
             else
             {
-                int index = text[i] - 'a';
-                printf("%c", tolower(key[index]));
+                printf("%c", tolower(key[text[i] - 'a']));
             }
         }
         else
