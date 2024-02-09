@@ -77,7 +77,7 @@ the **Θ** symbol is used when the upper and lower bounds are the same.
 
 ### search.c
 
-Linear search:
+#### Linear search with numbers:
 
 ```c
 #include <cs50.h>
@@ -85,10 +85,8 @@ Linear search:
 
 int main(void)
 {
-    // An array of integers
     int numbers[] = {20, 500, 10, 5, 100, 1, 50};
 
-    // Search for number
     int n = get_int("Number: ");
     for (int i = 0; i < 7; i++)
     {
@@ -103,8 +101,64 @@ int main(void)
 }
 ```
 
-```c
+#### Linear search with strings:
 
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string strings[] = {"battleship", "boot", "cannon", "iron", "thimble", "top hat"};
+
+    string s = get_string("String: ");
+    for (int i = 0; i < 6; i++)
+    {
+        if (strcmp(strings[i], s) == 0)
+        {
+            printf("Found\n");
+            return 0;
+        }
+    }
+    printf("Not found\n");
+    return 1;
+}
 ```
+
+If strcmp() returns **0** when comparing 2 strings they are the same. We use this because comparing with == directly doesn't work.
+
+```strcmp(string1, string2)``` comes from the ```#include <string.h>``` library.
+
+### phonebook.c
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    // Arrays of strings
+    string names[] = {"Carter", "David", "John"};
+    string numbers[] = {"+1-617-495-1000", "+1-617-495-1000", "+1-949-468-2750"};
+
+    // Search for name
+    string name = get_string("Name: ");
+    for (int i = 0; i < 3; i++)
+    {
+        if (strcmp(names[i], name) == 0)
+        {
+            printf("Found %s\n", numbers[i]);
+            return 0;
+        }
+    }
+    printf("Not found\n");
+    return 1;
+}
+```
+
+Phone numbers are stored as strings, on one hand to enable the use of dashes and country codes, and on the other hand it is common practice to store numbers you'll never do math on as strings.
+
 
 ## Data Structures
