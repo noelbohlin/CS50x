@@ -160,5 +160,64 @@ int main(void)
 
 Phone numbers are stored as strings, on one hand to enable the use of dashes and country codes, and on the other hand it is common practice to store numbers you'll never do math on as strings.
 
-
 ## Data Structures
+
+In the code above the separation of the names and numbers aren't optimal. It would be better for them to be coupled together as tonot lose track of whose is whose.
+
+```c
+#include <cs50.h>
+
+typedef struct
+{
+    string name;
+    string number;
+}
+person;
+```
+
+This creates a datatype called *person*. Inside *person* is 2 strings called *name* and *number*.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+typedef struct
+{
+    string name;
+    string number;
+}
+person;
+
+int main(void)
+{
+    person people[3];
+
+    people[0].name = "Carter";
+    people[0].number = "+1-617-495-1000";
+
+    people[1].name = "David";
+    people[1].number = "+1-617-495-1000";
+
+    people[2].name = "John";
+    people[2].number = "+1-949-468-2750";
+
+    // Search for name
+    string name = get_string("Name: ");
+    for (int i = 0; i < 3; i++)
+    {
+        if (strcmp(people[i].name, name) == 0)
+        {
+            printf("Found %s\n", people[i].number);
+            return 0;
+        }
+    }
+    printf("Not found\n");
+    return 1;
+}
+```
+
+```person people[3];``` initializes an array of datatype person called people[] with 3 entires. To create entries you, like objects in *python* use ```.name``` to initialize or access the name and ```.number``` to access the number.
+
+## Sorting
+
