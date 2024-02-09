@@ -323,3 +323,25 @@ void draw(int n)
 }
 ```
 
+### Merge sort
+
+ **Θ**(*n* log *n*)
+
+```c
+If only one number
+    Quit
+Else
+    Sort left half of number
+    Sort right half of number
+    Merge sorted halves
+```
+
+This is a recursive algorithm.
+
+## Summary
+
+- Algorithms.
+- Big O notation.
+- Binary search and linear search.
+- Various sort algorithms, including bubble sort, selection sort, and merge sort.
+- Recursion.
