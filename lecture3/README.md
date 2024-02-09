@@ -221,3 +221,105 @@ int main(void)
 
 ## Sorting
 
+### Selection sort
+
+```c
+For i from 0 to n–1
+    Find smallest number between numbers[i] and numbers[n-1]
+    Swap smallest number with numbers[i]
+```
+
+psuedocode
+
+This will take this many steps: n(n-1)/2
+
+or in big O notation: *O*(n²) and **Ω**(n²)
+
+### Bubble sort
+
+```c
+Repeat n-1 times
+    For i from 0 to n–2
+        If numbers[i] and numbers[i+1] out of order
+            Swap them
+    If no swaps
+        Quit
+```
+
+psuedocode
+
+This will take this many steps: n²/2 - n/2
+
+or in big O notation: *O*(n²) and **Ω**(n)
+
+## Recursion
+
+Recurision is a concept were a function calls itself.
+
+```c
+Search()
+    If no doors left
+        Return false
+    If number behind middle door
+        Return true
+    Else if number < middle door
+        Search(left half)
+    Else if number > middle door
+        Search(right half)
+```
+
+Or like this from week 0.
+
+```c
+1  Pick up phone book
+2  Open to middle of phone book
+3  Look at page
+4  If person is on page
+5      Call person
+6  Else if person is earlier in book
+7      Search left half of book
+9  Else if person is later in book
+10     Search right half of book
+12 Else
+13     Quit
+```
+
+### iteration.c
+
+Draw a pyramid of height *n*
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+void draw(int n);
+
+int main(void)
+{
+    // Get height of pyramid
+    int height = get_int("Height: ");
+
+    // Draw pyramid
+    draw(height);
+}
+
+void draw(int n)
+{
+    // If nothing to draw
+    if (n <= 0)
+    {
+        return;
+    }
+
+    // Draw pyramid of height n - 1
+    draw(n - 1);
+
+    // Draw one more row of width n
+    for (int i = 0; i < n; i++)
+    {
+        printf("#");
+    }
+    printf("\n");
+}
+```
+
