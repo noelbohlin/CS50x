@@ -77,7 +77,7 @@ the **Θ** symbol is used when the upper and lower bounds are the same.
 
 ### search.c
 
-#### Linear search with numbers:
+#### Linear search with numbers
 
 ```c
 #include <cs50.h>
@@ -101,7 +101,7 @@ int main(void)
 }
 ```
 
-#### Linear search with strings:
+#### Linear search with strings
 
 ```c
 #include <cs50.h>
