@@ -286,9 +286,13 @@ This will only copy the memory addresses and thus both "**s**" and "**t**" will 
 
 These two pointer are pointing at the same thing.
 
+-----
+
 ```malloc()``` the only argument is the amount of bytes you want the OS to free up a specific purpose. That is also the function of this funcion, MemoryALLOCation.
 
 ```free()``` Allows you to free up that block of memory.
+
+These are from the ```<stdlib.h>``` library.
 
 ```c
 #include <cs50.h>
@@ -412,3 +416,4 @@ int main(void)
 ```
 
 The *for* loop is a reinventing of the wheel. There is a function for that called ```strcpy(destination, source)```
+
