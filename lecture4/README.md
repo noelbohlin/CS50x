@@ -159,3 +159,256 @@ Will print ```HI!``` the same thing.
 
 ## String Comparison
 
+When comparing integers it is quite simple using the ```==```:
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Get two integers
+    int i = get_int("i: ");
+    int j = get_int("j: ");
+
+    // Compare integers
+    if (i == j)
+    {
+        printf("Same\n");
+    }
+    else
+    {
+        printf("Different\n");
+    }
+}
+```
+
+But for strings it is not as easy
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Get two strings
+    char *s = get_string("s: ");
+    char *t = get_string("t: ");
+
+    // Compare strings' addresses
+    if (s == t)
+    {
+        printf("Same\n");
+    }
+    else
+    {
+        printf("Different\n");
+    }
+}
+```
+
+This code doesn't work because it compares the memory addresses for the strings. Therefore it will always output different.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    // Get two strings
+    char *s = get_string("s: ");
+    char *t = get_string("t: ");
+
+    // Compare strings
+    if (strcmp(s, t) == 0)
+    {
+        printf("Same\n");
+    }
+    else
+    {
+        printf("Different\n");
+    }
+}
+```
+
+Using strcmp(char*, char*) we can compare strings. strcmp() return 0 if they are the same.
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Get two strings
+    char *s = get_string("s: ");
+    char *t = get_string("t: ");
+
+    // Print strings' addresses
+    printf("%p\n", s);
+    printf("%p\n", t);
+}
+```
+
+This visualizes that the strings doesn't have the same address even if they have the same words.
+
+## Copying
+
+```c
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    // Get a string
+    string s = get_string("s: ");
+
+    // Copy string's address
+    string t = s;
+
+    // Capitalize first letter in string
+    if (strlen(t) > 0)
+    {
+        t[0] = toupper(t[0]);
+    }
+
+    // Print string twice
+    printf("s: %s\n", s);
+    printf("t: %s\n", t);
+}
+```
+
+This will only copy the memory addresses and thus both "**s**" and "**t**" will have the first letter capitalized.
+
+![vizualized](image-4.png)
+
+These two pointer are pointing at the same thing.
+
+```malloc()``` the only argument is the amount of bytes you want the OS to free up a specific purpose. That is also the function of this funcion, MemoryALLOCation.
+
+```free()``` Allows you to free up that block of memory.
+
+```c
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+{
+    // Get a string
+    char *s = get_string("s: ");
+
+    // Allocate memory for another string
+    char *t = malloc(strlen(s) + 1);
+
+    // Copy string into memory, including '\0'
+    for (int i = 0, n = strlen(s); i <= n; i++)
+    {
+        t[i] = s[i];
+    }
+
+    // Capitalize copy
+    t[0] = toupper(t[0]);
+
+    // Print strings
+    printf("s: %s\n", s);
+    printf("t: %s\n", t);
+}
+```
+
+This code will work copying the string and only uppercase the "**t**" string.
+
+Notice how the ```malloc(strlen(s) + 1)``` free up space for the "**\0 (null)**" character aswell with the added "**+ 1**".
+
+Also notice that we declare ```n = strlen(s)``` to not have to call that funtion over and over again and that ```i <= n``` goes through n to also include the "**\0**" character at the end of the string.
+
+```c
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+{
+    // Get a string
+    char *s = get_string("s: ");
+    if (s == NULL)
+    {
+        return 1;
+    }
+
+    // Allocate memory for another string
+    char *t = malloc(strlen(s) + 1);
+    if (t == NULL)
+    {
+        return 1;
+    }
+
+    // Copy string into memory, including '\0'
+    for (int i = 0, n = strlen(s); i <= n; i++)
+    {
+        t[i] = s[i];
+    }
+
+    // Capitalize copy
+    t[0] = toupper(t[0]);
+
+    // Print strings
+    printf("s: %s\n", s);
+    printf("t: %s\n", t);
+
+    free(t);
+    return 0;
+}
+```
+
+These extra if statements harden the code by exiting the program early if anything with the memory allocation goes wrong. This also applies to ```get_string()``` if the string is so large it overflows.
+
+The ```free(t)``` at the bottom free up the memory allocated by ```malloc()```. If you doesn't do this the PC might get slow and crash if the memory run out of free space.
+
+You should only free memory that you *"malloced"*
+
+```c
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+{
+    // Get a string
+    char *s = get_string("s: ");
+    if (s == NULL)
+    {
+        return 1;
+    }
+
+    // Allocate memory for another string
+    char *t = malloc(strlen(s) + 1);
+    if (t == NULL)
+    {
+        return 1;
+    }
+
+    // Copy string into memory, including '\0'
+    strcpy(t, s);
+
+    // Capitalize copy
+    t[0] = toupper(t[0]);
+
+    // Print strings
+    printf("s: %s\n", s);
+    printf("t: %s\n", t);
+
+    free(t);
+    return 0;
+}
+```
+
+The *for* loop is a reinventing of the wheel. There is a function for that called ```strcpy(destination, source)```
