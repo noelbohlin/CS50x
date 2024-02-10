@@ -16,5 +16,29 @@ hexadecimal is counting with base 16, **0-F**(*0-15*)
     15 [base 10] == 0F [base 19]
     255 [base 10] == FF [base 16]
 
+It is convention to prefix hexadecimal numbers with "**0x**"
+
+    123 == 0x7B
+
 ## Memory
 
+We have earlier visualized memory as a grid:
+
+![Memory Grid](image-1.png)
+
+### addresses.c
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int n = 50;
+    printf("%p\n", &n);
+}
+```
+
+    & Provides the address of something stored in memory.
+    * Instructs the compiler to go to a location in memory.
+
+This program 
