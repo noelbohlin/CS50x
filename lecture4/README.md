@@ -41,4 +41,61 @@ int main(void)
     & Provides the address of something stored in memory.
     * Instructs the compiler to go to a location in memory.
 
-This program 
+This program prints out the address of "**n**" using ```%p``` and ```&n```
+
+## Pointers
+
+Pointer is a variable that contains the address of some value.
+
+```c
+int n = 50;
+
+int *p = &n;
+```
+
+"hey compiler, give me a variable called **'p'**, iside of which i can store the address of the integer **'n'**."
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int n = 50;
+    int *p = &n;
+    printf("%p\n", p);
+}
+```
+
+this code does the same ase the one above, printing the address,just using more syntax.
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int n = 50;
+    int *p = &n;
+    printf("%i\n", *p);
+}
+```
+
+This will print "**50**"
+
+```int *p``` is the syntax for declaring a pointer.
+
+```*p``` without using the type means "go there."
+
+### Visualized
+
+![Pointers](image-2.png)
+
+- a pointer is stored as an 8-byte value
+
+- an integer is stored as a 4-byte value
+
+![Pointers arrow](image-3.png)
+
+The address (place in memory) is rather abstract, it the "pointing" is the important part, not that you know the exakt hexadecimal place in the memory.
+
+## Strings
+
