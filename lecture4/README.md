@@ -417,3 +417,63 @@ int main(void)
 
 The *for* loop is a reinventing of the wheel. There is a function for that called ```strcpy(destination, source)```
 
+## Valgrind
+
+Valgrind is a tool that can be used to check for memoryrelated issues. It checks that you have used ```free()```.
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int x[3];
+    x[0] = 72;
+    x[1] = 73;
+    x[2] = 33;
+}
+```
+
+This is the simple way to create an array of 3 integers.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    int *x = malloc(3 * sizeof(int));
+    x[0] = 72;
+    x[1] = 73;
+    x[2] = 33;
+    free(x);
+}
+```
+
+If you want control over this process this is how you do it.
+
+```int *x``` give me the pointer (address of an integer) in the place that ```malloc(3 * sizeof(int))``` allocated.
+
+```sizeof()``` will give you the memory size of for example an int.
+
+```Malloc()``` creates a continous space in memory in the specified size. Or more simply called an *array*. This is what we do with *strings*, treating chunks of memory as *arrays* of *chars*.
+
+Using **Valgrind** ```Valgrind ./programname``` will give you an error text if you have memoryfaults in you program.
+
+## Garbage Values
+
+If you declare a variable using a block of memory but don't assign anything to it there is no guarantee that it will be empty.
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int scores[1024];
+    for (int i = 0; i < 1024; i++)
+    {
+        printf("%i\n", scores[i]);
+    }
+}
+```
+
+This program allocates 1024 locations in memory but doesn't assign anything to them. When they are printed you can see all the garbage values stored there if you don't put anything there yourself.
