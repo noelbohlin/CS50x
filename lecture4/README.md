@@ -477,3 +477,6 @@ int main(void)
 ```
 
 This program allocates 1024 locations in memory but doesn't assign anything to them. When they are printed you can see all the garbage values stored there if you don't put anything there yourself.
+
+ ## Swap
+ 
