@@ -478,5 +478,84 @@ int main(void)
 
 This program allocates 1024 locations in memory but doesn't assign anything to them. When they are printed you can see all the garbage values stored there if you don't put anything there yourself.
 
- ## Swap
- 
+## Swap function
+
+```c
+#include <stdio.h>
+
+void swap(int a, int b);
+
+int main(void)
+{
+    int x = 1;
+    int y = 2;
+
+    printf("x is %i, y is %i\n", x, y);
+    swap(x, y);
+    printf("x is %i, y is %i\n", x, y);
+}
+
+void swap(int a, int b)
+{
+    int tmp = a;
+    a = b;
+    b = tmp;
+}
+```
+
+This code, supposed to swap two variables does not work. It is a scope issue and the values **x** and **y** only exist in the *main()* function and are not affected by the *swap()* function. The values in the *swap()* are only copies provided to the function.
+
+![Swap2](image-6.png)
+
+The variables of the 2 functions *main()* and *swap()* have to different frames of memory and therefor you can not easily pass values back and forth.
+
+```c
+#include <stdio.h>
+
+void swap(int *a, int *b);
+
+int main(void)
+{
+    int x = 1;
+    int y = 2;
+
+    printf("x is %i, y is %i\n", x, y);
+    swap(&x, &y);
+    printf("x is %i, y is %i\n", x, y);
+}
+
+void swap(int *a, int *b)
+{
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+```
+
+In this version of the program we **pass the variables by reference** instead of **value** like in the earlier version. The addresses of **a** and **b** are provided to the function. Therefore, the *swap()* function can know where to make changes to the actual **a** and **b** from the *main()* function.
+
+![Swap3](image-7.png)
+
+## Overflow
+
+![Swap1](image-5.png)
+
+Global variables, live in one place in memory. Various functions are stored in the stack in another area of memory. Malloc are stored in the heap area of memory
+
+- A heap overflow is when you overflow the heap, touching areas of memory you are not supposed to.
+- A stack overflow is when too many functions are called, overflowing the amount of memory available.
+- Both of these are considered buffer overflows.
+
+## Scanf
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int x;
+    printf("x: ");
+    scanf("%i", &x);
+    printf("x: %i\n", x);
+}
+```
