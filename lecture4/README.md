@@ -578,3 +578,60 @@ This code assumes that the user only inputs 3 characters and no more. If more th
 
 ## File I/O
 
+Commands to read and alter files.
+
+- fopen
+- fclose
+- fprintf
+- fscanf
+- fread
+- fwrite
+- fseek
+- ...
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    FILE *file = fopen("phonebook.csv", "a");
+    if (file == NULL)
+    {
+        return 1;
+    }
+
+    char *name = get_string("Name: ");
+    char *number = get_string("Number: ");
+
+    fprintf(file, "%s,%s\n", name, number);
+
+    fclose(file);
+}
+```
+
+In this program you can append data to a csv file, the comma is harcoded to be added in the *fprintf()* function.
+
+```c
+#include <stdio.h>
+#include <stdint.h>
+
+typedef uint8_t BYTE;
+
+int main(int argc, char *argv[])
+{
+    FILE *src = fopen(argv[1], "rb");
+    FILE *dst = fopen(argv[2], "wb");
+
+    BYTE b;
+
+    while (fread(&b, sizeof(b), 1, src) !=0)
+    {
+        fwrite(&b, sizeof(b), 1, dst);
+    }
+
+    fclose(dst);
+    fclose(src);
+}
+```
