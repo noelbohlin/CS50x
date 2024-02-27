@@ -100,10 +100,14 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 for (int column = -1; column < 2; column++)
                 {
                     if (i + row < 0 || i + row > height - 1)
+                    {
                         continue;
+                    }
 
                     if (j + column < 0 || j + column > width - 1)
+                    {
                         continue;
+                    }
 
                     Gx_Blue += image[i + row][j + column].rgbtBlue * Gx[row + 1][column + 1];
                     Gy_Blue += image[i + row][j + column].rgbtBlue * Gy[row + 1][column + 1];
@@ -119,13 +123,19 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 red = round(sqrt(Gx_Red * Gx_Red + Gy_Red * Gy_Red));
 
             if (blue > 255)
+            {
                 blue = 255;
+            }
 
             if (green > 255)
+            {
                 green = 255;
+            }
 
             if (red > 255)
+            {
                 red = 255;
+            }
 
             tempImage[i][j].rgbtBlue = blue;
             tempImage[i][j].rgbtGreen = green;
