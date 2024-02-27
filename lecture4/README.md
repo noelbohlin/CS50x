@@ -554,8 +554,27 @@ Global variables, live in one place in memory. Various functions are stored in t
 int main(void)
 {
     int x;
-    printf("x: ");
-    scanf("%i", &x);
-    printf("x: %i\n", x);
+    printf("n: ");
+    scanf("%i", &n);
+    printf("n: %i\n", n);
 }
 ```
+
+For *int*s *scanf()* works. But for strings it is hard to know how how to preallocate the right amount of memory.
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    char s[4];
+    printf("s: ");
+    scanf("%s", s);
+    printf("s: %s\n", s);
+}
+```
+
+This code assumes that the user only inputs 3 characters and no more. If more than 4 charcters you will get a segmentation fault.
+
+## File I/O
+
