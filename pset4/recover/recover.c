@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
     {
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
         {
+            // I don't really know why this closing of the file is needed. but I get a memory leak otherwise.
             if (output != NULL)
             {
                 fclose(output);
@@ -53,6 +54,4 @@ int main(int argc, char *argv[])
 
     fclose(input);
     free(filename);
-
-    return 0;
 }
