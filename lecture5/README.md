@@ -165,3 +165,347 @@ typedef struct node
 }
 node;
 ```
+
+### Linked Lists in code
+
+```c
+// Prepends numbers to a linked list, using while loop to print
+
+#include <cs50.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+    int number;
+    struct node *next;
+}
+node;
+
+int main(int argc, char *argv[])
+{
+    // Memory for numbers
+    node *list = NULL;
+
+    // For each command-line argument
+    for (int i = 1; i < argc; i++)
+    {
+        // Convert argument to int
+        int number = atoi(argv[i]);
+
+        // Allocate node for number
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+        {
+            return 1;
+        }
+        n->number = number;
+        n->next = NULL;
+
+        // Prepend node to list
+        n->next = list;
+        list = n;
+    }
+
+    // Print numbers
+    node *ptr = list;
+    while (ptr != NULL)
+    {
+        printf("%i\n", ptr->number);
+        ptr = ptr->next;
+    }
+
+    // Free memory
+    ptr = list;
+    while (ptr != NULL)
+    {
+        node *next = ptr->next;
+        free(ptr);
+        ptr = next;
+    }
+}
+```
+
+Notice that what the user inputs at the command line is put into the number field of a node called n, and then that node is added to the list. For example, ./list 1 2 will put the number 1 into the number field of a node called n, then put a pointer to list into the next field of the node, and then update list to point to n. That same process is repeated for 2. Next, node *ptr = list creates a temporary variable that points at the same spot that list points to. The while prints what at the node ptr points to, and then updates ptr to point to the next node in the list. Finally, all the memory is freed.
+
+This approach prepends each number when adding meaning they will be in reverse order when printed.
+
+```c
+// Implements a list of numbers using a linked list
+
+#include <cs50.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+    int number;
+    struct node *next;
+}
+node;
+
+int main(int argc, char *argv[])
+{
+    // Memory for numbers
+    node *list = NULL;
+
+    // For each command-line argument
+    for (int i = 1; i < argc; i++)
+    {
+        // Convert argument to int
+        int number = atoi(argv[i]);
+
+        // Allocate node for number
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+        {
+            return 1;
+        }
+        n->number = number;
+        n->next = NULL;
+
+        // If list is empty
+        if (list == NULL)
+        {
+            // This node is the whole list
+            list = n;
+        }
+
+        // If list has numbers already
+        else
+        {
+            // Iterate over nodes in list
+            for (node *ptr = list; ptr != NULL; ptr = ptr->next)
+            {
+                // If at end of list
+                if (ptr->next == NULL)
+                {
+                    // Append node
+                    ptr->next = n;
+                    break;
+                }
+            }
+        }
+    }
+
+    // Print numbers
+    for (node *ptr = list; ptr != NULL; ptr = ptr->next)
+    {
+        printf("%i\n", ptr->number);
+    }
+
+    // Free memory
+    node *ptr = list;
+    while (ptr != NULL)
+    {
+        node *next = ptr->next;
+        free(ptr);
+        ptr = next;
+    }
+}
+```
+
+This approach appends the new items by checking the whole list until pointer variable is NULL, then appending.
+
+```c
+// Implements a sorted list of numbers using a linked list
+
+#include <cs50.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+    int number;
+    struct node *next;
+}
+node;
+
+int main(int argc, char *argv[])
+{
+    // Memory for numbers
+    node *list = NULL;
+
+    // For each command-line argument
+    for (int i = 1; i < argc; i++)
+    {
+        // Convert argument to int
+        int number = atoi(argv[i]);
+
+        // Allocate node for number
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+        {
+            return 1;
+        }
+        n->number = number;
+        n->next = NULL;
+
+        // If list is empty
+        if (list == NULL)
+        {
+            list = n;
+        }
+
+        // If number belongs at beginning of list
+        else if (n->number < list->number)
+        {
+            n->next = list;
+            list = n; 
+        }
+
+        // If number belongs later in list
+        else
+        {
+            // Iterate over nodes in list
+            for (node *ptr = list; ptr != NULL; ptr = ptr->next)
+            {
+                // If at end of list
+                if (ptr->next == NULL)
+                {
+                    // Append node
+                    ptr->next = n;
+                    break;
+                }
+
+                // If in middle of list
+                if (n->number < ptr->next->number)
+                {
+                    n->next = ptr->next;
+                    ptr->next = n;
+                    break;
+                }
+            }
+        }
+    }
+
+    // Print numbers
+    for (node *ptr = list; ptr != NULL; ptr = ptr->next)
+    {
+        printf("%i\n", ptr->number);
+    }
+
+    // Free memory
+    node *ptr = list;
+    while (ptr != NULL)
+    {
+        node *next = ptr->next;
+        free(ptr);
+        ptr = next;
+    }
+}
+```
+
+This list is sorted as it is built.
+
+## Trees
+
+![Tree1](image-5.png)
+
+A sequence of numbers that have been spaced out in 2 dimensions to allow for binary search to work.
+
+root number has pointer pointing to its leaves.
+
+```c
+// Implements a list of numbers as a binary search tree
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Represents a node
+typedef struct node
+{
+    int number;
+    struct node *left;
+    struct node *right;
+}
+node;
+
+void free_tree(node *root);
+void print_tree(node *root);
+
+int main(void)
+{
+    // Tree of size 0
+    node *tree = NULL;
+
+    // Add number to list
+    node *n = malloc(sizeof(node));
+    if (n == NULL)
+    {
+        return 1;
+    }
+    n->number = 2;
+    n->left = NULL;
+    n->right = NULL;
+    tree = n;
+
+    // Add number to list
+    n = malloc(sizeof(node));
+    if (n == NULL)
+    {
+        free_tree(tree);
+        return 1;
+    }
+    n->number = 1;
+    n->left = NULL;
+    n->right = NULL;
+    tree->left = n;
+
+    // Add number to list
+    n = malloc(sizeof(node));
+    if (n == NULL)
+    {
+        free_tree(tree);
+        return 1;
+    }
+    n->number = 3;
+    n->left = NULL;
+    n->right = NULL;
+    tree->right = n;
+
+    // Print tree
+    print_tree(tree);
+
+    // Free tree
+    free_tree(tree);
+    return 0;
+}
+
+void free_tree(node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    free_tree(root->left);
+    free_tree(root->right);
+    free(root);
+}
+
+void print_tree(node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    print_tree(root->left);
+    printf("%i\n", root->number);
+    print_tree(root->right);
+}
+```
+
+This program hardcodes the numbers 2, 1 and 3 to be added to the tree.
+
+## Dictionaries
+
+Dictionaries, like actual dictionaries that have a word and a definition, have a *key* and a *value*.
+
+Dictionaries can offer a speed of O(1) through hashing.
+
+## Hashing
+
+Hashing is the idea of taking a value and being able to output a value that becomes a shortcut to it later.
+
+Hashing, taking some number of inputs and mapping to a finite number of outputs.
+
