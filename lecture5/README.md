@@ -509,3 +509,19 @@ Hashing is the idea of taking a value and being able to output a value that beco
 
 Hashing, taking some number of inputs and mapping to a finite number of outputs.
 
+A hash function is an algorithm that reduces a larger value to something small and predictable. Generally, this function takes in an item you wish to add to your hash table, and returns an integer representing the array index in which the item should be placed.
+
+![Hash1](image-6.png)
+
+```c
+#include <ctype.h>
+
+unsigned int hash(const char *word)
+{
+    return toupper(word[0]) - 'A';
+}
+```
+
+## Tries
+
+![Tries](image-7.png)
