@@ -327,3 +327,273 @@ This would be the smart way to do it.
 
 ## Abstraction
 
+```py
+def main():
+    meow(3)
+
+
+# Meow some number of times
+def meow(n):
+    for i in range(n):
+        print("meow")
+
+
+main()
+```
+
+You can define your own functions in Python, but if you define a main funcion, you have to call it att the end of your file.
+
+It is convention that you create a main function.
+
+## Truncation
+
+```py
+# Prompt user for x
+x = int(input("x: "))
+
+# Prompt user for y
+y = int(input("y: "))
+
+# Divide x by y
+z = x / y
+print(z)
+```
+
+Notice that executing this code results in a value, but that if you were to see more digits after .333333 you’d see that we are faced with floating-point imprecision. Truncation does not occur. The int will behave like a float.
+
+**Integer overflow does not exist** in Python, the int size will grow with the int.
+
+## Exceptions
+
+A flawed implementations of a calculator:
+
+```py
+def get_int(prompt):
+    return int(input(prompt))
+
+
+def main():
+
+    # Prompt user for x
+    x = get_int("x: ")
+
+    # Prompt user for y
+    y = get_int("y: ")
+
+    # Perform addition
+    print(x + y)
+
+
+main()
+```
+
+If you were to input something that is not an int this program will crash.
+
+```py
+def get_int(prompt):
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print("Not an integer")
+
+
+def main():
+
+    # Prompt user for x
+    x = get_int("x: ")
+
+    # Prompt user for y
+    y = get_int("y: ")
+
+    # Perform addition
+    print(x + y)
+
+
+main()
+```
+
+Using **try** and **except** to try and catch errors in a forever loop is one way to solve this.
+
+In this case looking for a *ValueError*
+
+## Mario
+
+![Mario1](image.png)
+
+This in code:
+
+```py
+from cs50 import get_int
+
+while True:
+    n = get_int("Height: ")
+    if n > 0:
+        break
+
+for i in range(n):
+    print("#")
+```
+
+-----
+
+![Mario2](image-1.png)
+
+```py
+print("?" * 4)
+```
+
+-----
+
+![Mario3](image-2.png)
+
+```py
+from cs50 import get_int
+
+while True:
+    n = get_int("Height: ")
+    if n > 0:
+        break
+
+for i in range(n):
+    print("#" * n)
+```
+
+## Lists
+
+lists are a data structure within Python.
+
+They can expand and shrink like a linked list, but they are included and does not need to be implemented in code.
+
+lists have built in methods or functions within them.
+
+```py
+# Scores
+scores = [72, 73, 33]
+
+# Print average
+average = sum(scores) / len(scores)
+print(f"Average: {average}")
+```
+
+This is an example of the **sum** method.
+
+```py
+from cs50 import get_int
+
+# Get scores
+scores = []
+for i in range(3):
+    score = get_int("Score: ")
+    scores.append(score)
+
+# Print average
+average = sum(scores) / len(scores)
+print(f"Average: {average}")
+```
+
+This uses the **.append()** method. Doing all of the mallocing and linking lists for you.
+
+## Searching
+
+```py
+# A list of names
+names = ["Carter", "David", "John"]
+
+# Ask for name
+name = input("Name: ")
+
+# Search for name
+for n in names:
+    if name == n:
+        print("Found")
+        break
+else:
+    print("Not found")
+```
+
+Notice that a for loop can have an else statement aswell. If a for loop finishes it will go to the else statement and continue code as normal. but the break statement will skip any else statement if called.
+
+```py
+names = ["Carter", "David", "John"]
+
+# Ask for name
+name = input("Name: ")
+
+# Search for name
+if name in names:
+    print("Found")
+else:
+    print("Not found")
+```
+
+This would be the *pythonic* way to implemet linear search.
+
+## Dictionaries
+
+```py
+people = [
+    {"name": "Carter", "number": "+1-617-495-1000"},
+    {"name": "David", "number": "+1-617-495-1000"},
+    {"name": "John", "number": "+1-949-468-2750"},
+]
+
+# Search for name
+name = input("Name: ")
+
+for person in people:
+    if person["name"] == name:
+        print(f"Found {person['number']}")
+        break
+else:
+    print("Not found")
+```
+
+**people[]** is a **list** of **dictionaries**. Each dictionary having 2 entries with entries being a key-value pair.
+
+A dictionary in Python lets you index in to it. Using the key to access the value. **person["name"]** will get you the value (name) associated with the **name** key.
+
+-----
+
+```py
+people = {
+    "Carter": "+1-617-495-1000",
+    "David": "+1-617-495-1000",
+    "John": "+1-949-468-2750",
+}
+
+name = input("Name: ")
+
+if name in people:
+    print(f"Number: {people[name]}")
+else:
+    print("Not found")
+```
+
+If you dont need email and other things like would be possible in the previous approach, using just a dictionary instead of a list of dictionary is simpler.
+
+## sys
+
+```py
+from sys import argv
+
+if len(argv) == 2:
+    print(f"hello, {argv[1]}")
+else:
+    print("hello, world")
+```
+
+Using **sys** to access command line arguments
+
+```py
+import sys
+
+if len(sys.argv) != 2:
+    print("Missing command-line argument")
+    sys.exit(1)
+
+print(f"hello, {sys.argv[1]}")
+sys.exit(0)
+```
+
+ Using **sys** to exit program with exit codes.
