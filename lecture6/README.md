@@ -244,3 +244,86 @@ elif s.lower() in ["n", "no"]:
 s **.lower()** is a method of the object **str**
 
 ## Loops
+
+### While Loop
+
+While loop in C:
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int i = 0;
+    while (i < 3)
+    {
+        printf("meow\n");
+        i++;
+    }
+}
+```
+
+While loop in Python:
+
+```py
+i = 0
+while i < 3:
+    print("meow")
+    i += 1
+```
+
+-----
+
+```py
+while True:
+    print("meow")
+```
+
+### For Loop
+
+-----
+
+For loop in C:
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        printf("meow\n");
+    }
+}
+```
+
+For loop in Python:
+
+```py
+for _ in range(3):
+    print("meow")
+```
+
+The underscore is used to show that a variable is needed for the loop, but it will never be used.
+
+### Uppercase
+
+```py
+before = input("Before: ")
+print("After:  ", end="")
+for c in before:
+    print(c.upper(), end="")
+print()
+```
+
+using a loop to uppercase and print 1 character at a time.
+
+```py
+before = input("Before: ")
+print(f"After:  {before.upper()}")
+```
+
+This would be the smart way to do it.
+
+## Abstraction
+
