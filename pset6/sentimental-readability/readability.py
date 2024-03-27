@@ -16,39 +16,30 @@ def main():
 
 
 def letter_count(input):
-
     count = 0
 
-    for i in range(len(input)):
-
-        if input[i].isalpha():
-
+    for char in input:
+        if char.isalpha():
             count += 1
 
     return count
 
 
 def word_count(input):
-
     count = 1
 
-    for i in range(len(input)):
-
-        if input[i].isspace():
-
+    for char in input:
+        if char.isspace():
             count += 1
 
     return count
 
 
 def sentence_count(input):
-
     count = 0
 
-    for i in range(len(input)):
-
-        if input[i] == "." or input[i] == "!" or input[i] == "?":
-
+    for char in input:
+        if char in ('.', '!', '?'):
             count += 1
 
     return count
@@ -57,7 +48,6 @@ def sentence_count(input):
 def grade(l, w, s):
 
     L = l / (w / 100)
-
     S = s / (w / 100)
 
     index = 0.0588 * L - 0.296 * S - 15.8
