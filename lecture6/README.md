@@ -596,4 +596,4 @@ print(f"hello, {sys.argv[1]}")
 sys.exit(0)
 ```
 
- Using **sys** to exit program with exit codes.
+Using **sys** to exit program with exit codes.
