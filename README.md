@@ -29,6 +29,7 @@ In this section, you will find my personal notes on the various topics related t
 4. [Lecture 4: Memory](./lecture4/)
 5. [Lecture 5: Data Structures](./lecture5/)
 6. [Lecture 6: Python](./lecture6/)
+
 6.5 [Lecture 6.5: AI](./lecture6/)
 7. [Lecture 7: SQL](./lecture7/)
 8. [Lecture 8: Web](./lecture8/)
