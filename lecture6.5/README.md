@@ -100,6 +100,22 @@ Within much of AI-based algorithms, there are concepts of explore vs. exploit, w
 
 ## Deep Learning
 
+Deep learning uses neural networks whereby problems and solutions are explored.
 
+These are loosely based on how a human brain works with the "weight" or importance of different edges between nodes being the determining factor in changing behavior.
+
+![nodes1](image-1.png)
+
+For example, deep learning may attempt to predict whether a blue or red dot will appear somewhere on a graph. Consider the following image:
+
+Existing training data is used to predict an outcome. Further, more training data may be created by the AI to discover further patterns.
+
+![nodes2](image-2.png)
+
+With tweaking of different parameters of the edges a different function can arrive.
 
 ## Generative Artificial Intelligence
+
+Large language models are massive models that make predictions based on huge amounts of training.
+
+The AI encodes words into embeddings to find relationships between words. Thus, through a huge amount of training, a massive neural network can predict the association between words - resulting in the ability for generative AI to generate content and even have conversations with users.
